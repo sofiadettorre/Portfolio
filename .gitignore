@@ -1,0 +1,7 @@
+# Originali ad alta risoluzione (~300 MB): il sito usa solo /immagini-web
+immagini/
+
+# File di sistema
+Thumbs.db
+desktop.ini
+.DS_Store
