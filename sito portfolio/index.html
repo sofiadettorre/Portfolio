@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sofia d’Ettorre — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="immagini-web/favicon.png">
+  <link rel="apple-touch-icon" href="immagini-web/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="home">
+    <h1 id="hero"></h1>
+  </main>
+
+  <script src="data.js"></script>
+  <script>
+    renderNav("home");
+    document.getElementById("hero").textContent = SITE.hero;
+
+    // Precarica le immagini della scia
+    HOME_TRAIL.forEach(src => { new Image().src = src; });
+
+    // Scia di immagini che segue il cursore
+    let i = 0, lastX = 0, lastY = 0;
+    window.addEventListener("pointermove", (e) => {
+      if (e.pointerType === "touch") return;
+      if (Math.hypot(e.clientX - lastX, e.clientY - lastY) < 110) return;
+      lastX = e.clientX; lastY = e.clientY;
+
+      const img = document.createElement("img");
+      img.className = "trail";
+      img.src = HOME_TRAIL[i++ % HOME_TRAIL.length];
+      img.alt = "";
+      img.style.left = e.clientX + "px";
+      img.style.top = e.clientY + "px";
+      img.addEventListener("animationend", () => img.remove());
+      document.body.appendChild(img);
+    });
+  </script>
+</body>
+</html>

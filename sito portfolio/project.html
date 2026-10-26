@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Progetto — Sofia d’Ettorre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="immagini-web/favicon.png">
+  <link rel="apple-touch-icon" href="immagini-web/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="close" href="works.html" aria-label="Chiudi e torna ai lavori">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 6 34 34M34 6 6 34"/></svg>
+  </a>
+
+  <main class="project">
+    <div class="track" id="track"></div>
+  </main>
+
+  <div class="pbar caps">
+    <div class="left">
+      <span id="ptitle"></span>
+      <button id="infoBtn" type="button">+ Info</button>
+    </div>
+    <div class="counter" id="counter"></div>
+    <div><a id="prev">Progetto<br>precedente</a></div>
+    <div><a id="next">Progetto<br>successivo</a></div>
+  </div>
+
+  <section class="info" id="info" hidden>
+    <p id="pinfo"></p>
+    <dl class="caps" id="pcredits"></dl>
+  </section>
+
+  <script src="data.js"></script>
+  <script>
+    renderNav("works");
+
+    const slug = new URLSearchParams(location.search).get("p");
+    const idx = Math.max(0, PROJECTS.findIndex(p => p.slug === slug));
+    const p = PROJECTS[idx];
+    const at = (k) => PROJECTS[(idx + k + PROJECTS.length) % PROJECTS.length];
+
+    document.title = `${p.title} — ${SITE.name}`;
+    document.getElementById("ptitle").innerHTML =
+      `<b>(${String(idx + 1).padStart(2, "0")})</b>${p.title}`;
+    document.getElementById("prev").href = `project.html?p=${at(-1).slug}`;
+    document.getElementById("next").href = `project.html?p=${at(1).slug}`;
+    document.getElementById("pinfo").textContent = p.info;
+    document.getElementById("pcredits").innerHTML =
+      Object.entries(p.credits).map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
+
+    const track = document.getElementById("track");
+    track.innerHTML = p.images.map(src => media(src)).join("");
+
+    // Contatore [immagine corrente / totale]
+    const counter = document.getElementById("counter");
+    const imgs = [...track.children];
+    const updateCounter = () => {
+      const mid = track.scrollLeft + track.clientWidth / 3;
+      let cur = imgs.findIndex(img => img.offsetLeft + img.offsetWidth > mid);
+      if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) cur = imgs.length - 1;
+      counter.textContent = `[${cur + 1}/${imgs.length}]`;
+    };
+    track.addEventListener("scroll", updateCounter);
+    imgs.forEach(el => el.addEventListener(el.tagName === "VIDEO" ? "loadeddata" : "load", updateCounter));
+    updateCounter();
+
+    // Rotella verticale -> scroll orizzontale
+    track.addEventListener("wheel", (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        track.scrollLeft += e.deltaY;
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Frecce da tastiera
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") track.scrollBy({ left: track.clientWidth * .6, behavior: "smooth" });
+      if (e.key === "ArrowLeft") track.scrollBy({ left: -track.clientWidth * .6, behavior: "smooth" });
+      if (e.key === "Escape") toggleInfo(false);
+    });
+
+    // + Info
+    const info = document.getElementById("info");
+    const infoBtn = document.getElementById("infoBtn");
+    const toggleInfo = (show = info.hidden) => {
+      info.hidden = !show;
+      infoBtn.textContent = show ? "– Info" : "+ Info";
+    };
+    infoBtn.addEventListener("click", () => toggleInfo());
+  </script>
+</body>
+</html>

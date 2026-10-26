@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lavori — Sofia d’Ettorre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="immagini-web/favicon.png">
+  <link rel="apple-touch-icon" href="immagini-web/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="works" id="works"></main>
+
+  <script src="data.js"></script>
+  <script>
+    renderNav("works");
+
+    document.getElementById("works").innerHTML = PROJECTS.map((p, n) => `
+      <a class="row" href="project.html?p=${p.slug}">
+        <div class="row-head caps">
+          <div class="title"><span class="num">(${String(n + 1).padStart(2, "0")})</span><span>${p.title}</span></div>
+          <div class="tags">${p.tags}</div>
+          <div>${p.year}</div>
+        </div>
+        <div class="thumbs">
+          ${p.images.map(src => media(src, 'loading="lazy"')).join("")}
+        </div>
+      </a>`).join("");
+  </script>
+</body>
+</html>
