@@ -290,10 +290,16 @@ img, video { display: block; max-width: 100%; }
   background: color-mix(in oklab, var(--ink-1) 7%, transparent);
   padding: 2px 7px 3px; margin-top: 4px;
 }
-.card:hover, .card:focus-visible { background-color: var(--hover-wash); }
-.card:hover .card__title, .card:focus-visible .card__title { color: var(--accent); }
-.card:hover .card__thumb { transform: scale(1.03); }
-.card:hover .card__meta, .card:focus-visible .card__meta { opacity: 1; }
+/* Effetti al passaggio del mouse: solo con un vero mouse, e mai mentre si scorre la pagina */
+.card:focus-visible { background-color: var(--hover-wash); }
+.card:focus-visible .card__title { color: var(--accent); }
+.card:focus-visible .card__meta { opacity: 1; }
+@media (hover: hover) and (pointer: fine) {
+  .card:hover { background-color: var(--hover-wash); }
+  .card:hover .card__title { color: var(--accent); }
+  .card:hover .card__meta { opacity: 1; }
+}
+body.is-scrolling .projects { pointer-events: none; }
 @media (hover: none) { .card__meta { opacity: 1; } }
 
 /* ---------- Footer ---------- */

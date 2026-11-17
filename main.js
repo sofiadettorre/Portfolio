@@ -129,6 +129,14 @@ const videoWatcher = "IntersectionObserver" in window
     }), { threshold: 0.2 })
   : null;
 
+// Mentre si scorre, le schede ignorano il mouse (niente lampeggi); tornano attive appena ci si ferma
+let scrollTimer;
+window.addEventListener("scroll", () => {
+  document.body.classList.add("is-scrolling");
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => document.body.classList.remove("is-scrolling"), 160);
+}, { passive: true });
+
 // Ridisegna la griglia solo quando cambia il numero di colonne
 let resizeTimer;
 window.addEventListener("resize", () => {
