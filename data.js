@@ -50,13 +50,43 @@ const SITE = {
     ]
   ),
   work: [
-    { role: T("Politecnico di Milano, Assistente alla didattica", "Politecnico di Milano, Teaching Assistant"), year: "2026–2027" },
-    { role: T("International School Europe, Coding Teacher", "International School Europe, Coding Teacher"), year: "2025–2026" },
+    {
+      role: T(
+        "Politecnico di Milano, Assistente alla didattica del corso Cultura dell’Immagine Digitale tenuto dalla professoressa Maria Grazia Mattei",
+        "Politecnico di Milano, Teaching Assistant for the Digital Image Culture course taught by Professor Maria Grazia Mattei"
+      ),
+      year: "2026–2027",
+    },
+    {
+      role: T(
+        "International School Europe da Fun and School, Coding Teacher",
+        "International School Europe by Fun and School, Coding Teacher"
+      ),
+      year: "2025–2026",
+    },
   ],
   education: [
-    { role: T("Politecnico di Milano, Laurea Magistrale", "Politecnico di Milano, Master’s Degree"), year: T("2025–oggi", "2025–present") },
-    { role: T("Hunan University (Cina), Exchange Semester", "Hunan University (China), Exchange Semester"), year: "2025–2026" },
-    { role: T("Politecnico di Milano, Laurea Triennale", "Politecnico di Milano, Bachelor’s Degree"), year: "2022–2025" },
+    {
+      role: T(
+        "Politecnico di Milano, Laurea Magistrale in Design della Comunicazione",
+        "Politecnico di Milano, Master’s Degree in Communication Design"
+      ),
+      year: T("2025–oggi", "2025–present"),
+    },
+    {
+      role: T(
+        "Hunan University (Cina), Exchange Semester. Corsi selezionati: Advanced Studies on Emerging Design Frontiers, Cultural Heritage and Digital Innovation, Design Futures and Speculation e Fashion Branding",
+        "Hunan University (China), Exchange Semester. Selected courses: Advanced Studies on Emerging Design Frontiers, Cultural Heritage and Digital Innovation, Design Futures and Speculation and Fashion Branding"
+      ),
+      year: "2025–2026",
+    },
+    {
+      role: T(
+        "Politecnico di Milano, Laurea Triennale in Design della Comunicazione",
+        "Politecnico di Milano, Bachelor’s Degree in Communication Design"
+      ),
+      year: "2022–2025",
+    },
   ],
   skills: ["Visual Communication", "Brand Identity & Strategy", "Editorial Design & Typography", "UX/UI Design", "Art Direction & Visual Storytelling", "Exhibition Design", "Generative AI & Speculative Design", "Photography"],
   languages: T(

@@ -204,7 +204,8 @@ img, video { display: block; max-width: 100%; }
 .rail__section { display: flex; flex-direction: column; gap: 8px; }
 .bio p { font-size: var(--t-body); line-height: 1.6; color: var(--ink-2); max-width: 62ch; }
 .bio p + p { margin-top: 8px; }
-.list__row { display: flex; gap: 12px; padding: 1px 2px; font-size: var(--t-home); color: var(--ink-2); }
+.list { display: flex; flex-direction: column; gap: 6px; }
+.list__row { display: flex; gap: 12px; padding: 1px 2px; font-size: var(--t-home); line-height: 1.5; color: var(--ink-2); }
 .list__row span:first-child { flex: 1; }
 .list__year { color: var(--ink-4); white-space: nowrap; }
 
