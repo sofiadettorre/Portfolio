@@ -127,6 +127,7 @@ const UI = {
 const PROJECTS = [
   {
     slug: "revera",
+    cover: "16 / 9",            // proporzioni della copertina (larghezza / altezza)
     title: "Revera",
     chip: "Brand Identity",
     oneliner: T(
@@ -147,6 +148,7 @@ const PROJECTS = [
   },
   {
     slug: "glitch-of-us",
+    cover: "1182 / 921",
     title: "Glitch of Us",
     chip: "Exhibition",
     oneliner: T(
@@ -167,6 +169,7 @@ const PROJECTS = [
   },
   {
     slug: "clarify",
+    cover: "911 / 699",
     title: "Clarify",
     chip: "UX/UI",
     oneliner: T(
@@ -188,6 +191,7 @@ const PROJECTS = [
   },
   {
     slug: "help-furaha",
+    cover: "3 / 2",
     title: "Reportage Help Furaha",
     chip: "Reportage",
     oneliner: T(
@@ -208,6 +212,7 @@ const PROJECTS = [
   },
   {
     slug: "agosto-moglie-mia-non-ti-conosco",
+    cover: "3 / 2",
     title: "Agosto, moglie mia non ti conosco",
     chip: "Editorial",
     oneliner: T(
@@ -229,6 +234,7 @@ const PROJECTS = [
   },
   {
     slug: "dexa",
+    cover: "16 / 9",
     title: "DEXA",
     chip: "Speculative",
     oneliner: T(
@@ -250,6 +256,7 @@ const PROJECTS = [
   },
   {
     slug: "ancient-sentinels",
+    cover: "1701 / 1080",
     title: "Ancient Sentinels",
     chip: "Generative AI",
     oneliner: T(
@@ -271,6 +278,7 @@ const PROJECTS = [
   },
   {
     slug: "futura",
+    cover: "3 / 2",
     title: "FUTURA",
     chip: "Editorial",
     oneliner: T(

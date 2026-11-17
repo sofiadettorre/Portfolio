@@ -66,11 +66,38 @@ function renderContacts() {
 }
 
 // ---------- Schede progetto ----------
-function renderProjects() {
-  $("lavori").innerHTML = PROJECTS.map((p, i) => `
+// Proporzione della copertina: "16 / 9" → 1.78 (se manca, 4:3)
+const coverRatio = (p) => {
+  const [w, h] = String(p.cover || "4 / 3").split("/").map(Number);
+  return w / h || 4 / 3;
+};
+
+// Numero di colonne in base alla larghezza dello schermo
+const columnCount = () => (innerWidth >= 1024 ? 3 : innerWidth >= 720 ? 2 : 1);
+
+// Divide i progetti, in ordine, in colonne di altezza il più possibile simile.
+// Le colonne sono fisse: passare col mouse o caricare un'immagine non sposta più le schede.
+function splitIntoColumns(items, cols) {
+  const h = items.map(p => 1 / coverRatio(p) + 0.42);   // altezza stimata: immagine + testo
+  let best = null;
+  (function search(start, left, groups) {
+    if (left === 1) {
+      const all = [...groups, [start, items.length]];
+      const max = Math.max(...all.map(([a, b]) => h.slice(a, b).reduce((s, x) => s + x, 0)));
+      if (!best || max < best.max) best = { max, all };
+      return;
+    }
+    for (let end = start + 1; end <= items.length - left + 1; end++) search(end, left - 1, [...groups, [start, end]]);
+  })(0, Math.min(cols, items.length), []);
+  return best.all;
+}
+
+function cardHtml(p, i) {
+  const poster = p.images.find(s => !/\.mp4$/i.test(s));
+  return `
     <a class="card" href="#${p.slug}">
-      <div class="card__frame">
-        ${media(p.images[0], `class="card__thumb" loading="lazy" poster="${p.images.find(s => !/\.mp4$/i.test(s))}"`)}
+      <div class="card__frame" style="aspect-ratio:${p.cover || "4 / 3"}">
+        ${media(p.images[0], `class="card__thumb" loading="lazy" poster="${poster}"`)}
         <span class="card__num">(${pad(i)})</span>
       </div>
       <div class="card__body">
@@ -83,8 +110,31 @@ function renderProjects() {
           ${p.tags.map(tag => `<span>${tag}</span>`).join("")}<span>${p.year}</span>
         </div></div>
       </div>
-    </a>`).join("");
+    </a>`;
 }
+
+let gridCols = 0;
+function renderProjects() {
+  gridCols = columnCount();
+  $("lavori").innerHTML = splitIntoColumns(PROJECTS, gridCols)
+    .map(([a, b]) => `<div class="projects-col">${PROJECTS.slice(a, b).map((p, k) => cardHtml(p, a + k)).join("")}</div>`)
+    .join("");
+  // i video delle copertine girano solo quando sono visibili
+  $("lavori").querySelectorAll("video").forEach(v => videoWatcher && videoWatcher.observe(v));
+}
+
+const videoWatcher = "IntersectionObserver" in window
+  ? new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause();
+    }), { threshold: 0.2 })
+  : null;
+
+// Ridisegna la griglia solo quando cambia il numero di colonne
+let resizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => { if (columnCount() !== gridCols) renderProjects(); }, 150);
+});
 
 // ---------- Rendering di tutti i testi nella lingua corrente ----------
 const rows = (list) => list.map(r => `<li class="list__row"><span>${t(r.role)}</span><span class="list__year">${t(r.year)}</span></li>`).join("");

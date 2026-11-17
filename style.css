@@ -249,22 +249,20 @@ img, video { display: block; max-width: 100%; }
 }
 
 /* ---------- Progetti ---------- */
-.projects { position: relative; z-index: 1; columns: 1; column-gap: 8px; padding-top: 24px; }
-@media (min-width: 720px) { .projects { columns: 2; } }
-@media (min-width: 1024px) { .projects { columns: 3; } }
+/* Colonne fisse create da main.js: le schede non saltano da una colonna all'altra */
+.projects { position: relative; z-index: 1; display: flex; align-items: flex-start; gap: 8px; padding-top: 24px; }
+.projects-col { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
 
 .card {
   display: block;
-  break-inside: avoid;
-  margin-bottom: 8px;
   padding: 8px;
   border-radius: 14px;
   transition: background-color 180ms var(--ease-out), transform 140ms var(--ease-out);
 }
 .card:active { transform: scale(0.99); }
 .card__frame { position: relative; width: 100%; overflow: hidden; border-radius: 8px; background: var(--surface-deep); }
-/* La copertina mantiene le sue proporzioni: la griglia si adatta all'immagine */
-.card__thumb { width: 100%; height: auto; transition: transform 260ms var(--ease-out); }
+/* Lo spazio della copertina è riservato (aspect-ratio da data.js), così niente salti al caricamento */
+.card__thumb { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 260ms var(--ease-out); }
 .card__num {
   position: absolute; top: 10px; right: 12px; z-index: 2;
   font-family: var(--font-primary); font-weight: 600; font-size: var(--t-eyebrow);
@@ -282,8 +280,9 @@ img, video { display: block; max-width: 100%; }
   transition: color 160ms;
 }
 .card__description { font-size: var(--t-home); line-height: 1.55; color: var(--ink-3); text-wrap: pretty; }
-.card__meta { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 380ms var(--ease-expo), opacity 240ms; }
-.card__meta-inner { min-height: 0; overflow: hidden; display: flex; flex-wrap: wrap; gap: 5px; }
+/* Le etichette occupano sempre il loro spazio e compaiono solo in dissolvenza: l'altezza della scheda non cambia */
+.card__meta { opacity: 0; transition: opacity 240ms var(--ease-out); }
+.card__meta-inner { display: flex; flex-wrap: wrap; gap: 5px; }
 .card__meta-inner span {
   font-family: var(--font-primary); font-size: var(--t-eyebrow); font-weight: 500;
   letter-spacing: 0.04em; text-transform: uppercase;
@@ -294,8 +293,8 @@ img, video { display: block; max-width: 100%; }
 .card:hover, .card:focus-visible { background-color: var(--hover-wash); }
 .card:hover .card__title, .card:focus-visible .card__title { color: var(--accent); }
 .card:hover .card__thumb { transform: scale(1.03); }
-.card:hover .card__meta, .card:focus-visible .card__meta { grid-template-rows: 1fr; opacity: 1; }
-@media (hover: none) { .card__meta { grid-template-rows: 1fr; opacity: 1; } }
+.card:hover .card__meta, .card:focus-visible .card__meta { opacity: 1; }
+@media (hover: none) { .card__meta { opacity: 1; } }
 
 /* ---------- Footer ---------- */
 .footer { padding: 64px var(--pad-x) 0; display: flex; flex-direction: column; gap: 48px; }
