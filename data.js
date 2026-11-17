@@ -211,28 +211,6 @@ const PROJECTS = [
     images: img("furaha-01.jpg", "furaha-02.jpg", "furaha-03.jpg", "furaha-04.jpg", "furaha-05.jpg", "furaha-06.jpg", "furaha-07.jpg", "furaha-08.jpg", "furaha-09.jpg", "furaha-10.jpg", "furaha-11.jpg"),
   },
   {
-    slug: "agosto-moglie-mia-non-ti-conosco",
-    cover: "3 / 2",
-    title: "Agosto, moglie mia non ti conosco",
-    chip: "Editorial",
-    oneliner: T(
-      "Un libro visivo ispirato al romanzo di Achille Campanile, tra sceneggiatura, impaginazione e sequenze fotografiche.",
-      "A visual book inspired by Achille Campanile’s novel, weaving together screenplay, layout and photographic sequences."
-    ),
-    tags: ["Editorial Design", "Visual Storytelling", "Photography"],
-    year: "2025",
-    course: T("Progetto finale, Laurea Triennale", "Final project, Bachelor’s Degree"),
-    info: T(
-      "Progettazione editoriale di un libro visivo ispirato all'omonimo romanzo di Achille Campanile. Il progetto rielabora il testo originale in forma di sceneggiatura, sviluppando un sistema narrativo che intreccia contenuti editoriali e sequenze fotografiche. Attraverso il dialogo tra parola e immagine, la pubblicazione supera i confini tradizionali del libro per trasformare la lettura in un'esperienza immersiva, valorizzando la dimensione teatrale e performativa del racconto.",
-      "Editorial design of a visual book inspired by Achille Campanile’s novel of the same name. The project reworks the original text as a screenplay, developing a narrative system that interweaves editorial content and photographic sequences. Through the dialogue between word and image, the publication goes beyond the traditional limits of the book and turns reading into an immersive experience, bringing out the theatrical and performative side of the story."
-    ),
-    contributions: T(
-      ["Progettazione editoriale", "Adattamento narrativo", "Impaginazione", "Ricerca visiva"],
-      ["Editorial design", "Narrative adaptation", "Layout", "Visual research"]
-    ),
-    images: img("agosto-01.jpg", "agosto-02.jpg", "agosto-03.jpg", "agosto-04.jpg", "agosto-05.jpg", "agosto-06.jpg", "agosto-07.jpg", "agosto-08.jpg", "agosto-09.jpg"),
-  },
-  {
     slug: "dexa",
     cover: "16 / 9",
     title: "DEXA",
@@ -253,6 +231,28 @@ const PROJECTS = [
       ["Development of the speculative scenario", "Visual exploration with generative AI"]
     ),
     images: img("dexa 1.jpg", "dexa 2.jpg", "dexa 3.jpg", "dexa 4.jpg", "dexa 5.jpg", "dexa 6.jpg", "dexa 7.jpg", "dexa 8.jpg", "dexa 9.jpg"),
+  },
+  {
+    slug: "agosto-moglie-mia-non-ti-conosco",
+    cover: "3 / 2",
+    title: "Agosto, moglie mia non ti conosco",
+    chip: "Editorial",
+    oneliner: T(
+      "Un libro visivo ispirato al romanzo di Achille Campanile, tra sceneggiatura, impaginazione e sequenze fotografiche.",
+      "A visual book inspired by Achille Campanile’s novel, weaving together screenplay, layout and photographic sequences."
+    ),
+    tags: ["Editorial Design", "Visual Storytelling", "Photography"],
+    year: "2025",
+    course: T("Progetto finale, Laurea Triennale", "Final project, Bachelor’s Degree"),
+    info: T(
+      "Progettazione editoriale di un libro visivo ispirato all'omonimo romanzo di Achille Campanile. Il progetto rielabora il testo originale in forma di sceneggiatura, sviluppando un sistema narrativo che intreccia contenuti editoriali e sequenze fotografiche. Attraverso il dialogo tra parola e immagine, la pubblicazione supera i confini tradizionali del libro per trasformare la lettura in un'esperienza immersiva, valorizzando la dimensione teatrale e performativa del racconto.",
+      "Editorial design of a visual book inspired by Achille Campanile’s novel of the same name. The project reworks the original text as a screenplay, developing a narrative system that interweaves editorial content and photographic sequences. Through the dialogue between word and image, the publication goes beyond the traditional limits of the book and turns reading into an immersive experience, bringing out the theatrical and performative side of the story."
+    ),
+    contributions: T(
+      ["Progettazione editoriale", "Adattamento narrativo", "Impaginazione", "Ricerca visiva"],
+      ["Editorial design", "Narrative adaptation", "Layout", "Visual research"]
+    ),
+    images: img("agosto-01.jpg", "agosto-02.jpg", "agosto-03.jpg", "agosto-04.jpg", "agosto-05.jpg", "agosto-06.jpg", "agosto-07.jpg", "agosto-08.jpg", "agosto-09.jpg"),
   },
   {
     slug: "ancient-sentinels",
