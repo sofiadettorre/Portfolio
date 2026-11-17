@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Sofia d’Ettorre — Portfolio</title>
   <meta name="description" content="Portfolio di Sofia d’Ettorre, designer della comunicazione che esplora il punto d’incontro tra comunicazione visiva e tecnologie emergenti.">
   <link rel="canonical" href="https://sofiadettorre.github.io/Portfolio/">
@@ -12,43 +12,107 @@
   <meta property="og:url" content="https://sofiadettorre.github.io/Portfolio/">
   <meta property="og:image" content="https://sofiadettorre.github.io/Portfolio/immagini-web/immagine%20hero.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="preload" as="image" href="immagini-web/immagine%20hero.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="immagini-web/favicon.png">
   <link rel="apple-touch-icon" href="immagini-web/apple-touch-icon.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="home">
-    <h1 id="hero"></h1>
+  <main class="main" id="top">
+    <div class="page-locale" id="status"></div>
+    <div class="decor" id="decor" aria-hidden="true"></div>
+
+    <aside class="rail">
+      <section class="hero" aria-label="Introduzione">
+        <h1 class="hero__text">
+          Ciao, sono Sofia d’Ettorre<img class="hero__obj" src="immagini-web/cursore%201.png" alt="" aria-hidden="true">
+          designer della comunicazione <span class="sticker">a&nbsp;Milano</span>
+          che esplora il punto d’incontro tra comunicazione visiva
+          <span class="hero__tail">e tecnologie emergenti.</span>
+        </h1>
+      </section>
+
+      <div class="rail__grid">
+        <div class="rail__col">
+          <section class="rail__section">
+            <span class="eyebrow">Bio</span>
+            <div class="bio" id="bio"></div>
+          </section>
+          <section class="rail__section">
+            <span class="eyebrow">Esperienze</span>
+            <ul class="list" id="work"></ul>
+          </section>
+          <section class="rail__section">
+            <span class="eyebrow">Formazione</span>
+            <ul class="list" id="education"></ul>
+          </section>
+        </div>
+
+        <div class="rail__col">
+          <section class="rail__section" id="info">
+            <span class="eyebrow">Info</span>
+            <div class="contact-list" id="contacts"></div>
+          </section>
+          <section class="rail__section">
+            <span class="eyebrow">Competenze</span>
+            <ul class="taglist" id="skills"></ul>
+          </section>
+          <section class="rail__section">
+            <span class="eyebrow">Lingue</span>
+            <ul class="list" id="languages"></ul>
+          </section>
+        </div>
+      </div>
+    </aside>
+
+    <section class="projects" id="lavori" aria-label="Progetti selezionati"></section>
   </main>
 
+  <footer class="footer">
+    <div class="footer__art ph-box" aria-hidden="true"><span>Illustrazione footer — segnaposto</span></div>
+    <div class="footer__bar">
+      <span id="copy"></span>
+      <a href="#top">Torna su ↑</a>
+    </div>
+  </footer>
+
+  <!-- Pannello del progetto -->
+  <div class="cs-overlay" id="cs-overlay" aria-hidden="true">
+    <div class="cs-panel" role="dialog" aria-modal="true" aria-labelledby="cs-title">
+      <aside class="cs-side">
+        <button class="cs-close" id="cs-close" type="button" aria-label="Chiudi progetto">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15"/></svg>
+        </button>
+        <div>
+          <h2 class="cs-title" id="cs-title">–</h2>
+          <p class="cs-oneliner" id="cs-oneliner"></p>
+        </div>
+        <dl class="cs-facts" id="cs-facts"></dl>
+        <div class="cs-step">
+          <button type="button" id="cs-prev" aria-label="Progetto precedente">← Prec.</button>
+          <button type="button" id="cs-next" aria-label="Progetto successivo">Succ. →</button>
+        </div>
+      </aside>
+      <div class="cs-content" id="cs-content">
+        <div class="cs-hero" id="cs-hero"></div>
+        <div class="cs-text">
+          <div class="cs-section">
+            <p class="eyebrow">Panoramica</p>
+            <p id="cs-overview"></p>
+          </div>
+          <div class="cs-section">
+            <p class="eyebrow">Il mio ruolo &amp; contributi</p>
+            <ol class="cs-list" id="cs-contrib"></ol>
+          </div>
+        </div>
+        <div class="cs-gallery" id="cs-gallery"></div>
+      </div>
+    </div>
+  </div>
+
   <script src="data.js"></script>
-  <script>
-    renderNav("home");
-    document.getElementById("hero").textContent = SITE.hero;
-
-    // Precarica le immagini della scia
-    HOME_TRAIL.forEach(src => { new Image().src = src; });
-
-    // Scia di immagini che segue il cursore
-    let i = 0, lastX = 0, lastY = 0;
-    window.addEventListener("pointermove", (e) => {
-      if (e.pointerType === "touch") return;
-      if (Math.hypot(e.clientX - lastX, e.clientY - lastY) < 110) return;
-      lastX = e.clientX; lastY = e.clientY;
-
-      const img = document.createElement("img");
-      img.className = "trail";
-      img.src = HOME_TRAIL[i++ % HOME_TRAIL.length];
-      img.alt = "";
-      img.style.left = e.clientX + "px";
-      img.style.top = e.clientY + "px";
-      img.addEventListener("animationend", () => img.remove());
-      document.body.appendChild(img);
-    });
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
