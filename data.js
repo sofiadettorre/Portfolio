@@ -185,6 +185,26 @@ const PROJECTS = [
     images: img("clarify-01.jpg", "clarify-02.jpg", "clarify-03.jpg", "clarify-04.jpg", "clarify-05.jpg", "clarify-06.jpg", "clarify-7.jpg", "clarify-08.jpg", "clarify-09.jpg", "clarify-10.jpg", "clarify-11.jpg", "clarify-12.jpg", "clarify-13.jpg"),
   },
   {
+    slug: "help-furaha",
+    title: "Reportage Help Furaha",
+    chip: "Reportage",
+    oneliner: T(
+      "Un reportage fotografico in Kenya con i medici di Help Furaha, accanto ai bambini con paralisi cerebrale e autismo.",
+      "A photo reportage in Kenya with the doctors of Help Furaha, alongside children with cerebral palsy and autism."
+    ),
+    tags: ["Photography", "Reportage"],
+    year: "2025",
+    info: T(
+      "Nel novembre 2025 ho seguito come fotoreporter un gruppo di medici italiani dell’associazione Help Furaha nella loro missione in Kenya: prima nella piccola contea di Meru, poi nel deserto di Laisamis, per aiutare bambini con paralisi cerebrale e autismo.",
+      "In November 2025 I joined a group of Italian doctors from the Help Furaha association as a photojournalist on their mission to Kenya: first to the small county of Meru, then to the Laisamis Desert, to help children with cerebral palsy and autism."
+    ),
+    contributions: T(
+      ["Fotografia", "Post-produzione"],
+      ["Photography", "Post-production"]
+    ),
+    images: img("furaha-01.jpg", "furaha-02.jpg", "furaha-03.jpg", "furaha-04.jpg", "furaha-05.jpg", "furaha-06.jpg", "furaha-07.jpg", "furaha-08.jpg", "furaha-09.jpg", "furaha-10.jpg", "furaha-11.jpg"),
+  },
+  {
     slug: "agosto-moglie-mia-non-ti-conosco",
     title: "Agosto, moglie mia non ti conosco",
     chip: "Editorial",
