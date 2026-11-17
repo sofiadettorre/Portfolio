@@ -162,8 +162,7 @@ img, video { display: block; max-width: 100%; }
 .hero__photo {
   position: absolute;
   left: 50%; bottom: calc(100% + 14px);
-  width: clamp(150px, 13vw, 220px);
-  aspect-ratio: 4 / 5;
+  width: clamp(240px, 22vw, 340px);   /* la foto mantiene il suo formato originale */
   padding: 6px;
   background: #fff;
   border: 1px solid color-mix(in oklab, var(--ink-1) 18%, transparent);
@@ -174,7 +173,7 @@ img, video { display: block; max-width: 100%; }
   transition: opacity 220ms var(--ease-out), transform 420ms var(--ease-expo);
   z-index: 3;
 }
-.hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 46% 50%; }
+.hero__photo img { width: 100%; height: auto; }
 .hero__photo.is-missing { display: none; }
 .hero__name:hover .hero__photo,
 .hero__name:focus .hero__photo { opacity: 1; transform: translate(-50%, 0) rotate(-4deg) scale(1); }

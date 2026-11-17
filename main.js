@@ -40,13 +40,22 @@ photoWrap.classList.add("is-missing");
 photo.src = PHOTO;
 
 // ---------- Contatti ----------
+// Sul sito online: se il PDF del CV non è stato caricato, la riga del CV non compare
+let cvMissing = false;
+if (location.protocol.startsWith("http")) {
+  fetch(SITE.cv.url, { method: "HEAD" })
+    .then(r => { if (!r.ok) { cvMissing = true; renderContacts(); } })
+    .catch(() => {});
+}
+
 const arrow = `<svg class="contact-row__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg>`;
 function renderContacts() {
   const contacts = [
     { label: "Email", value: SITE.email, href: "mailto:" + SITE.email },
     { label: "LinkedIn", value: SITE.linkedin.label, href: SITE.linkedin.url },
-  ];
-  const external = (href) => /^https?:/i.test(href);
+    cvMissing ? null : { label: "CV", value: t(SITE.cv.label), href: SITE.cv.url },
+  ].filter(Boolean);
+  const external = (href) => /^https?:|\.pdf$/i.test(href);
   $("contacts").innerHTML = contacts.map(c => `
     <a class="contact-row" href="${c.href}" ${external(c.href) ? 'target="_blank" rel="noopener noreferrer"' : ""}>
       <span class="contact-row__star" aria-hidden="true">★</span>

@@ -31,6 +31,8 @@ const SITE = {
   status: T("Italia", "Italy"),
   email: "sofiadettorre@gmail.com",
   linkedin: { label: "Sofia d’Ettorre", url: "https://www.linkedin.com/in/sofia-d%E2%80%99ettorre-a621b72b3/" },
+  // CV: metti il PDF nella cartella "immagini-web" chiamandolo "cv.pdf"
+  cv: { label: T("Guarda il CV", "View CV"), url: "immagini-web/cv.pdf" },
   hero: {
     greet: T("Ciao :)", "Hi :)"),
     text: T(
@@ -266,6 +268,26 @@ const PROJECTS = [
       ["IP character concept", "Image generation", "3D rendering", "Animated video production"]
     ),
     images: img("ancient sentinels 1.jpg", "ancient sentinels 2.jpg", "ancient sentinels 3.jpg", "ancient sentinels 4.jpg", "ancient sentinels 5.jpg", "ancient sentinels 6.jpg", "ancient sentinels 7.jpg", "ancient sentinels 8.jpg", "ancient sentinels 9.jpg", "ancient sentinels 10.jpg"),
+  },
+  {
+    slug: "futura",
+    title: "FUTURA",
+    chip: "Editorial",
+    oneliner: T(
+      "Una rivista speculativa che usa tipografia e impaginazione come strumenti di critica sociale, a partire da una mostra di Damien Hirst.",
+      "A speculative magazine that uses typography and layout as tools of social critique, starting from an exhibition by Damien Hirst."
+    ),
+    tags: ["Editorial Design", "Typography", "Speculative Design"],
+    year: "2024",
+    info: T(
+      "Futura è un progetto sperimentale che utilizza la tipografia e l’impaginazione per trasmettere una profonda critica sociale, prendendo come caso di studio la mostra Treasures from the Wreck of the Unbelievable di Damien Hirst. La rivista è concepita come il documento di un futuro speculativo in cui un gruppo di scienziati scopre un misterioso tesoro: un forziere eroso dal tempo, che ha perso ogni valore e ogni caratteristica identificativa. Nel tentativo di comprenderne il significato, gli scienziati analizzano i manufatti e formulano ipotesi sul sistema monetario del passato, senza riuscire infine a ricostruirne la funzione.",
+      "Futura is an experimental project that uses typography and layout to convey a deep social critique, taking Damien Hirst’s exhibition Treasures from the Wreck of the Unbelievable as its case study. The magazine is conceived as a document from a speculative future in which a group of scientists discovers a mysterious treasure: a chest, eroded by time, that has lost all its value and every identifying feature. In trying to understand its meaning, the scientists analyse the artefacts and form hypotheses about the monetary system of the past, ultimately failing to reconstruct its function."
+    ),
+    contributions: T(
+      ["Concept speculativo", "Progettazione editoriale", "Tipografia e impaginazione"],
+      ["Speculative concept", "Editorial design", "Typography and layout"]
+    ),
+    images: img("futura-01.jpg", "futura-02.jpg", "futura-03.jpg", "futura-04.jpg", "futura-05.jpg", "futura-06.jpg"),
   },
 ];
 
